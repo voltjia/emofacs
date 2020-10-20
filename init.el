@@ -60,6 +60,10 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+;; Winner
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
 ;; Alarm Bell
 (setq visible-bell 1)
 
