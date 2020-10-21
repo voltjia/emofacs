@@ -65,13 +65,13 @@
   (winner-mode 1))
 
 ;; Alarm Bell
-(setq visible-bell 1)
+(setq ring-bell-function 'ignore)
 
 ;; Line Numbers
 (when (version<= "26.0.50" emacs-version)
   (global-display-line-numbers-mode))
 
-;; CC Mode
+;; Cc Mode
 (require 'cc-mode)
 (setq c-default-style "k&r")
 (setq c-basic-offset 4)
