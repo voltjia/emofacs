@@ -49,6 +49,7 @@
 (sp-with-modes '(c-mode c++-mode)
   (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-local-pair "/*" "*/" :post-handlers '(("| " "SPC") ("* ||\n[i]" "RET"))))
+(setq sp-escape-quotes-after-insert nil)
 
 (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
 
@@ -67,7 +68,10 @@
 (when (version<= "26.0.50" emacs-version)
   (global-display-line-numbers-mode))
 
-;; Cc Mode
+;; CC Mode
 (require 'cc-mode)
 (setq c-default-style "k&r")
 (setq c-basic-offset 4)
+
+;; Asm Mode
+(setq-default electric-indent-inhibit t)
