@@ -1,2 +1,0 @@
-;;; Generated package description from /Users/lanimir/.emacs.d/elpa/company-irony-1.1.0/company-irony.el  -*- no-byte-compile: t -*-
-(define-package "company-irony" "1.1.0" "company-mode completion back-end for irony-mode" '((emacs "24.1") (company "0.8.0") (irony "1.1.0") (cl-lib "0.5")) :commit "52aca45bcd0f2cb0648fcafa2bbb4f8ad4b2fee7" :keywords '("convenience") :authors '(("Guillaume Papin" . "guillaume.papin@epitech.eu")) :maintainer '("Guillaume Papin" . "guillaume.papin@epitech.eu") :url "https://github.com/Sarcasm/company-irony/")
