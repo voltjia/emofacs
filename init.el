@@ -78,6 +78,9 @@
 ;; Column Number Mode
 (column-number-mode 1)
 
+;; Tabs
+(setq-default indent-tabs-mode nil)
+
 ;; CC Mode
 (require 'cc-mode)
 (setq c-default-style "k&r")
