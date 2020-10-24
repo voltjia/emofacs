@@ -68,6 +68,7 @@
 (set-face-foreground 'mode-line "light gray")
 (set-face-foreground 'font-lock-comment-face "gray")
 (set-face-foreground 'font-lock-comment-delimiter-face "gray")
+(set-face-foreground 'font-lock-doc-face "gray")
 
 ;; Line Number Mode
 (if (version<= "26.0.50" emacs-version)
