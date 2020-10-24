@@ -66,6 +66,7 @@
 
 ;; Face Attributes
 (set-face-foreground 'mode-line "light gray")
+(set-face-foreground 'line-number "gray")
 (set-face-foreground 'font-lock-comment-face "gray")
 (set-face-foreground 'font-lock-comment-delimiter-face "gray")
 (set-face-foreground 'font-lock-doc-face "gray")
