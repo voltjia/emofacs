@@ -64,9 +64,18 @@
 ;; Alarm Bell
 (setq ring-bell-function 'ignore)
 
-;; Line Numbers
-(when (version<= "26.0.50" emacs-version)
-  (global-display-line-numbers-mode))
+;; Face Attributes
+(set-face-foreground 'mode-line "light gray")
+(set-face-foreground 'font-lock-comment-face "gray")
+(set-face-foreground 'font-lock-comment-delimiter-face "gray")
+
+;; Line Number Mode
+(if (version<= "26.0.50" emacs-version)
+  (global-display-line-numbers-mode)
+  (global-linum-mode 1))
+
+;; Column Number Mode
+(column-number-mode 1)
 
 ;; CC Mode
 (require 'cc-mode)
