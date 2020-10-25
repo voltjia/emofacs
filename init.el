@@ -66,7 +66,8 @@
 (setq ring-bell-function 'ignore)
 
 ;; Face Attributes
-(set-face-foreground 'mode-line "light gray")
+(set-face-foreground 'mode-line-inactive "light gray")
+(set-face-foreground 'mode-line "white")
 (set-face-foreground 'line-number "gray")
 (set-face-foreground 'font-lock-comment-face "gray")
 (set-face-foreground 'font-lock-comment-delimiter-face "gray")
