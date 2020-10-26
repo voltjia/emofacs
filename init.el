@@ -5,15 +5,13 @@
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'dracula t)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(counsel ivy flycheck company smartparens dracula-theme)))
+ '(package-selected-packages
+   '(counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -21,11 +19,22 @@
  ;; If there is more than one, they won't work right.
  )
 
+(when (cl-find-if-not #'package-installed-p package-selected-packages)
+  (package-refresh-contents)
+  (mapc #'package-install package-selected-packages))
+
+;; Dracula
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'dracula t)
+
 ;; Ivy
 (counsel-mode 1)
 
 ;; Company
 (add-hook 'after-init-hook 'global-company-mode)
+
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 2)
 
 ;; Flycheck
 (add-hook 'c++-mode-hook 'flycheck-mode)
