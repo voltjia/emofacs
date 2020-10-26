@@ -13,8 +13,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(counsel ivy flycheck company-irony irony company smartparens dracula-theme)))
+ '(package-selected-packages '(counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -25,22 +24,13 @@
 ;; Ivy
 (counsel-mode 1)
 
-;; Irony
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;; Company
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Flycheck
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++20")))
 (add-hook 'c-mode-hook 'flycheck-mode)
-
-;; Company
-(add-hook 'after-init-hook 'global-company-mode)
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
 
 ;; Smartparens
 (require 'smartparens-config)
