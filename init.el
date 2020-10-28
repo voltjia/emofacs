@@ -40,6 +40,10 @@
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
 
+(setq lsp-clients-clangd-args
+      '("--header-insertion=never"
+        "--header-insertion-decorators=0"))
+
 ;; Flycheck
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
