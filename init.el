@@ -120,13 +120,9 @@
 
 ;; CC Mode
 (require 'cc-mode)
-(defconst my-cc-style
-  '("k&r"
-    (c-basic-offset 4)
-    (c-offsets-alist . ((innamespace . [0])))))
-(c-add-style "my-cc-style" my-cc-style)
-
-(add-hook 'c++-mode-hook (lambda () (c-set-style "my-cc-style")))
+(setq c-default-style "k&r")
+(setq c-basic-offset 4)
+(c-set-offset 'innamespace 0)
 
 ;; Asm Mode
 (setq electric-indent-inhibit t)
