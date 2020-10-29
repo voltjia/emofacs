@@ -11,7 +11,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -29,6 +29,24 @@
 
 ;; Ivy
 (counsel-mode 1)
+
+;; Projectile
+(projectile-mode 1)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+;; Treemacs
+(require 'treemacs)
+(treemacs-follow-mode t)
+(treemacs-filewatch-mode t)
+(treemacs-fringe-indicator-mode t)
+(setq treemacs-show-cursor t)
+(define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
+(define-key global-map (kbd "M-0") 'treemacs-select-window)
+
+(treemacs-load-all-the-icons-with-workaround-font "Hermit")
+
+(require 'treemacs-projectile)
 
 ;; Company
 (add-hook 'after-init-hook 'global-company-mode)
