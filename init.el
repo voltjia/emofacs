@@ -120,8 +120,16 @@
 
 ;; CC Mode
 (require 'cc-mode)
-(setq c-default-style "k&r")
-(setq c-basic-offset 4)
+(defconst my-cc-style
+  '("k&r"
+    (c-basic-offset 4)
+    (c-offsets-alist . ((innamespace . [0])))))
+(c-add-style "my-cc-style" my-cc-style)
+
+(add-hook 'c++-mode-hook (lambda () (c-set-style "my-cc-style")))
 
 ;; Asm Mode
-(setq-default electric-indent-inhibit t)
+(setq electric-indent-inhibit t)
+
+;; Verilog Mode
+(setq verilog-auto-newline nil)
