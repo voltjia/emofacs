@@ -111,6 +111,10 @@
 ;; Tabs
 (setq-default indent-tabs-mode nil)
 
+;; Org Mode
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
 ;; CC Mode
 (require 'cc-mode)
 (setq c-default-style "k&r")
