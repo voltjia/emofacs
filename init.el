@@ -65,6 +65,14 @@
 ;; YASnippet
 (yas-global-mode 1)
 
+(defvar my-company-point nil)
+(advice-add 'company-complete-common
+            :before (lambda () (setq my-company-point (point))))
+(advice-add 'company-complete-common
+            :after (lambda ()
+  		     (when (equal my-company-point (point))
+  		       (yas-expand))))
+
 ;; Flycheck
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
@@ -105,7 +113,7 @@
 
 ;; Line Number Mode
 (if (version<= "26.0.50" emacs-version)
-  (global-display-line-numbers-mode)
+    (global-display-line-numbers-mode)
   (global-linum-mode 1))
 
 ;; Column Number Mode
