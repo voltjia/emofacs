@@ -37,6 +37,7 @@
 
 ;; Treemacs
 (require 'treemacs)
+(setq treemacs-width 24)
 (treemacs-follow-mode t)
 (treemacs-filewatch-mode t)
 (treemacs-fringe-indicator-mode t)
@@ -77,6 +78,7 @@
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-standard-library "libc++")))
 (add-hook 'c-mode-hook 'flycheck-mode)
 
 ;; Smartparens
@@ -102,6 +104,12 @@
 
 ;; Alarm Bell
 (setq ring-bell-function 'ignore)
+
+;; Window Resize
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
 ;; Face Attributes
 (set-face-foreground 'mode-line-inactive "light gray")
