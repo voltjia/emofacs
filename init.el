@@ -7,8 +7,8 @@
 ;; copies of the Software, and to permit persons to whom the Software is
 ;; furnished to do so, subject to the following conditions:
 
-;; The above copyright notice and this permission notice shall be included in all
-;; copies or substantial portions of the Software.
+;; The above copyright notice and this permission notice shall be included in
+;; all copies or substantial portions of the Software.
 
 ;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 ;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -57,7 +57,6 @@
 
 ;; Treemacs
 (require 'treemacs)
-(setq treemacs-width 24)
 (treemacs-follow-mode t)
 (treemacs-filewatch-mode t)
 (treemacs-fringe-indicator-mode t)
@@ -106,6 +105,7 @@
 (add-hook 'c-mode-hook #'smartparens-mode)
 (add-hook 'c++-mode-hook #'smartparens-mode)
 (add-hook 'asm-mode-hook #'smartparens-mode)
+(add-hook 'python-mode-hook #'smartparens-mode)
 ;; When you press RET, the curly braces automatically add another newline.
 (sp-with-modes '(c-mode c++-mode)
   (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
