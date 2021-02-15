@@ -18,6 +18,9 @@
 ;; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ;; SOFTWARE.
 
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")))
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
@@ -42,6 +45,8 @@
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
   (mapc #'package-install package-selected-packages))
+
+(require 'use-package)
 
 ;; Dracula
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -175,4 +180,6 @@
           (lambda () (setq indent-tabs-mode nil)))
 (setq rust-format-on-save t)
 (define-key rust-mode-map (kbd "C-c C-c") 'rust-run)
+
+(use-package rustic)
 
