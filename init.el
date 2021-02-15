@@ -31,7 +31,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -94,11 +94,11 @@
   		       (yas-expand))))
 
 ;; Flycheck
+(add-hook 'c-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-standard-library "libc++")))
-(add-hook 'c-mode-hook 'flycheck-mode)
 
 ;; Smartparens
 (require 'smartparens-config)
@@ -165,3 +165,6 @@
 
 ;; Verilog Mode
 (setq verilog-auto-newline nil)
+
+;; Rust Mode
+(require 'rust-mode)
