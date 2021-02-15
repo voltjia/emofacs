@@ -114,6 +114,7 @@
 (add-hook 'asm-mode-hook #'smartparens-mode)
 (add-hook 'python-mode-hook #'smartparens-mode)
 (add-hook 'rust-mode-hook #'smartparens-mode)
+(add-hook 'rustic-mode-hook #'smartparens-mode)
 ;; When you press RET, the curly braces automatically add another newline.
 (sp-with-modes '(c-mode c++-mode)
   (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
