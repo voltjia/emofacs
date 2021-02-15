@@ -77,6 +77,7 @@
 ;; LSP
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
+(add-hook 'rust-mode-hook 'lsp)
 
 (setq lsp-clients-clangd-args
       '("--header-insertion=never"
@@ -99,6 +100,7 @@
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-standard-library "libc++")))
+(add-hook 'rust-mode-hook 'flycheck-mode)
 
 ;; Smartparens
 (require 'smartparens-config)
@@ -168,3 +170,8 @@
 
 ;; Rust Mode
 (require 'rust-mode)
+(add-hook 'rust-mode-hook
+          (lambda () (setq indent-tabs-mode nil)))
+(setq rust-format-on-save t)
+(define-key rust-mode-map (kbd "C-c C-c") 'rust-run)
+
