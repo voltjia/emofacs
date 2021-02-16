@@ -18,6 +18,7 @@
 ;; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ;; SOFTWARE.
 
+;; Package Setup
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -71,6 +72,7 @@
 
 (treemacs-load-all-the-icons-with-workaround-font "Hermit")
 
+;; Treemacs Projectile
 (require 'treemacs-projectile)
 
 ;; Company
@@ -83,6 +85,7 @@
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
 (add-hook 'rust-mode-hook 'lsp)
+(add-hook 'js-mode-hook 'lsp)
 
 (setq lsp-clients-clangd-args
       '("--header-insertion=never"
@@ -106,6 +109,7 @@
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-standard-library "libc++")))
 (add-hook 'rust-mode-hook 'flycheck-mode)
+(add-hook 'js-mode-hook 'flycheck-mode)
 
 ;; Smartparens
 (require 'smartparens-config)
@@ -115,6 +119,8 @@
 (add-hook 'python-mode-hook #'smartparens-mode)
 (add-hook 'rust-mode-hook #'smartparens-mode)
 (add-hook 'rustic-mode-hook #'smartparens-mode)
+(add-hook 'js-mode-hook #'smartparens-mode)
+
 ;; When you press RET, the curly braces automatically add another newline.
 (sp-with-modes '(c-mode c++-mode)
   (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
@@ -182,4 +188,6 @@
 (setq rust-format-on-save t)
 (define-key rust-mode-map (kbd "C-c C-c") 'rust-run)
 
+;; Rustic Mode
 (use-package rustic)
+
