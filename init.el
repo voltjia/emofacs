@@ -122,7 +122,7 @@
 (add-hook 'js-mode-hook #'smartparens-mode)
 
 ;; When you press RET, the curly braces automatically add another newline.
-(sp-with-modes '(c-mode c++-mode)
+(sp-with-modes '(c-mode c++-mode asm-mode python-mode rust-mode rustic-mode js-mode)
   (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-local-pair "/*" "*/" :post-handlers '(("| " "SPC") ("* ||\n[i]" "RET"))))
 (setq sp-escape-quotes-after-insert nil)
@@ -190,4 +190,7 @@
 
 ;; Rustic Mode
 (use-package rustic)
+
+;; JavaScript Mode
+(setq js-indent-level 2)
 
