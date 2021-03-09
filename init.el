@@ -35,7 +35,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -48,6 +48,12 @@
   (mapc #'package-install package-selected-packages))
 
 (require 'use-package)
+
+;; Ensure environment variables inside Emacs look the same as in the user's shell
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+(when (daemonp)
+  (exec-path-from-shell-initialize))
 
 ;; Dracula
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -86,6 +92,7 @@
 (add-hook 'c++-mode-hook 'lsp)
 (add-hook 'rust-mode-hook 'lsp)
 (add-hook 'js-mode-hook 'lsp)
+(add-hook 'go-mode-hook 'lsp)
 
 (setq lsp-clients-clangd-args
       '("--header-insertion=never"
@@ -110,6 +117,7 @@
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-standard-library "libc++")))
 (add-hook 'rust-mode-hook 'flycheck-mode)
 (add-hook 'js-mode-hook 'flycheck-mode)
+(add-hook 'go-mode-hook 'flycheck-mode)
 
 ;; Smartparens
 (require 'smartparens-config)
@@ -120,6 +128,7 @@
 (add-hook 'rust-mode-hook #'smartparens-mode)
 (add-hook 'rustic-mode-hook #'smartparens-mode)
 (add-hook 'js-mode-hook #'smartparens-mode)
+(add-hook 'go-mode-hook #'smartparens-mode)
 
 ;; When you press RET, the curly braces automatically add another newline.
 (sp-with-modes '(c-mode c++-mode asm-mode python-mode rust-mode rustic-mode js-mode)
@@ -194,3 +203,6 @@
 ;; JavaScript Mode
 (setq js-indent-level 2)
 
+;; Frame
+(add-to-list 'default-frame-alist '(width . 160))
+(add-to-list 'default-frame-alist '(height . 48))
