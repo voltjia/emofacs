@@ -1,4 +1,4 @@
-;; Copyright (c) 2020 Jiacheng Huang
+;; Copyright (c) 2020-2021 Jiacheng Huang
 
 ;; Permission is hereby granted, free of charge, to any person obtaining a copy
 ;; of this software and associated documentation files (the "Software"), to deal
@@ -47,6 +47,10 @@
   (package-refresh-contents)
   (mapc #'package-install package-selected-packages))
 
+;; Bootstrap John Wigley's "use-package"
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 (require 'use-package)
 
 ;; Ensure environment variables inside Emacs look the same as in the user's shell
