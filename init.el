@@ -116,12 +116,13 @@
 ;; Flycheck
 (add-hook 'c-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook 'flycheck-mode)
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-standard-library "libc++")))
 (add-hook 'rust-mode-hook 'flycheck-mode)
 (add-hook 'js-mode-hook 'flycheck-mode)
 (add-hook 'go-mode-hook 'flycheck-mode)
+
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-standard-library "libc++")))
 
 ;; Smartparens
 (require 'smartparens-config)
@@ -133,14 +134,13 @@
 (add-hook 'rustic-mode-hook #'smartparens-mode)
 (add-hook 'js-mode-hook #'smartparens-mode)
 (add-hook 'go-mode-hook #'smartparens-mode)
+(add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
 
 ;; When you press RET, the curly braces automatically add another newline.
 (sp-with-modes '(c-mode c++-mode asm-mode python-mode rust-mode rustic-mode js-mode)
   (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-local-pair "/*" "*/" :post-handlers '(("| " "SPC") ("* ||\n[i]" "RET"))))
 (setq sp-escape-quotes-after-insert nil)
-
-(add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
 
 ;; Windmove
 (when (fboundp 'windmove-default-keybindings)
