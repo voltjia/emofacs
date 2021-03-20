@@ -34,8 +34,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(zenburn-theme magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -59,10 +61,6 @@
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
-;; Dracula
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'dracula t)
-
 ;; Ivy
 (counsel-mode 1)
 
@@ -77,6 +75,7 @@
 (treemacs-filewatch-mode t)
 (treemacs-fringe-indicator-mode t)
 (setq treemacs-show-cursor t)
+(setq treemacs-width 32)
 (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
 (define-key global-map (kbd "M-0") 'treemacs-select-window)
 
@@ -89,7 +88,7 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 (setq company-idle-delay 0)
-(setq company-minimum-prefix-length 2)
+(setq company-minimum-prefix-length 1)
 
 ;; LSP
 (add-hook 'c-mode-hook 'lsp)
@@ -159,13 +158,20 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
+;; Dracula ;; Uncomment the following lines to enable the dracula theme.
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;; (load-theme 'dracula t)
+
 ;; Face Attributes
-(set-face-foreground 'mode-line-inactive "light gray")
-(set-face-foreground 'mode-line "white")
-(set-face-foreground 'line-number "gray")
-(set-face-foreground 'font-lock-comment-face "gray")
-(set-face-foreground 'font-lock-comment-delimiter-face "gray")
-(set-face-foreground 'font-lock-doc-face "gray")
+;; (set-face-foreground 'mode-line-inactive "light gray")
+;; (set-face-foreground 'mode-line "white")
+;; (set-face-foreground 'line-number "gray")
+;; (set-face-foreground 'font-lock-comment-face "gray")
+;; (set-face-foreground 'font-lock-comment-delimiter-face "gray")
+;; (set-face-foreground 'font-lock-doc-face "gray")
+
+;; Zenburn
+(load-theme 'zenburn t)
 
 ;; Line Number Mode
 (if (version<= "26.0.50" emacs-version)
