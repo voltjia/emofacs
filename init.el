@@ -37,7 +37,7 @@
  '(custom-safe-themes
    '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(zenburn-theme magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -119,10 +119,6 @@
 (add-hook 'js-mode-hook 'flycheck-mode)
 (add-hook 'go-mode-hook 'flycheck-mode)
 
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++17")))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++17")))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-standard-library "libc++")))
-
 ;; Smartparens
 (require 'smartparens-config)
 (add-hook 'c-mode-hook #'smartparens-mode)
@@ -158,20 +154,16 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
-;; Dracula ;; Uncomment the following lines to enable the dracula theme.
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;; (load-theme 'dracula t)
+;; Dracula
+(load-theme 'dracula t)
 
 ;; Face Attributes
-;; (set-face-foreground 'mode-line-inactive "light gray")
-;; (set-face-foreground 'mode-line "white")
-;; (set-face-foreground 'line-number "gray")
-;; (set-face-foreground 'font-lock-comment-face "gray")
-;; (set-face-foreground 'font-lock-comment-delimiter-face "gray")
-;; (set-face-foreground 'font-lock-doc-face "gray")
-
-;; Zenburn
-(load-theme 'zenburn t)
+(set-face-foreground 'mode-line-inactive "light gray")
+(set-face-foreground 'mode-line "white")
+(set-face-foreground 'line-number "gray")
+(set-face-foreground 'font-lock-comment-face "gray")
+(set-face-foreground 'font-lock-comment-delimiter-face "gray")
+(set-face-foreground 'font-lock-doc-face "gray")
 
 ;; Line Number Mode
 (if (version<= "26.0.50" emacs-version)
