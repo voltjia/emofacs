@@ -79,7 +79,10 @@
 (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
 (define-key global-map (kbd "M-0") 'treemacs-select-window)
 
-(treemacs-load-all-the-icons-with-workaround-font "Hermit")
+;; Treemacs All The Icons
+;; Install resource fonts by 'M-x all-the-icons-install-fonts'
+(require 'treemacs-all-the-icons)
+(treemacs-load-theme "all-the-icons")
 
 ;; Treemacs Projectile
 (require 'treemacs-projectile)
