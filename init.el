@@ -37,7 +37,7 @@
  '(custom-safe-themes
    '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(smart-tabs-mode magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -137,6 +137,9 @@
   (sp-local-pair "/*" "*/" :post-handlers '(("| " "SPC") ("* ||\n[i]" "RET"))))
 (setq sp-escape-quotes-after-insert nil)
 
+;; Smart Tabs
+(smart-tabs-insinuate 'c)
+
 ;; Windmove
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
@@ -174,6 +177,7 @@
 (column-number-mode 1)
 
 ;; Tabs
+(setq-default tab-width 8)
 (setq-default indent-tabs-mode nil)
 
 ;; Org Mode
@@ -182,8 +186,10 @@
 
 ;; CC Mode
 (require 'cc-mode)
-(setq c-default-style "k&r")
-(setq c-basic-offset 4)
+(setq-default c-default-style "linux")
+(setq-default c-basic-offset 8)
+(add-hook 'c-mode-common-hook
+          (lambda () (setq indent-tabs-mode t)))
 (c-set-offset 'innamespace 0)
 
 ;; Asm Mode
