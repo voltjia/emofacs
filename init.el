@@ -37,7 +37,7 @@
  '(custom-safe-themes
    '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -93,19 +93,22 @@
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
 
+;; Which Key
+(which-key-mode)
+
 ;; LSP
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
 (add-hook 'rust-mode-hook 'lsp)
 (add-hook 'js-mode-hook 'lsp)
 (add-hook 'go-mode-hook 'lsp)
-
 (setq lsp-clients-clangd-args
       '("--header-insertion=never"
         "--header-insertion-decorators=0"))
-
-;; Which Key
-(which-key-mode)
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (require 'dap-cpptools)
+  (yas-global-mode))
 
 ;; YASnippet
 (yas-global-mode 1)
@@ -196,6 +199,7 @@
 (setq c-basic-offset 8)
 (add-hook 'c-mode-common-hook
           (lambda () (setq indent-tabs-mode t)))
+(setq c-backspace-function 'delete-backward-char)
 (c-set-offset 'innamespace 0)
 
 ;; Asm Mode
