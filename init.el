@@ -61,6 +61,9 @@
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
+;; Dracula
+(load-theme 'dracula t)
+
 ;; Ivy
 (counsel-mode 1)
 
@@ -96,31 +99,6 @@
 ;; Which Key
 (which-key-mode)
 
-;; LSP
-(add-hook 'c-mode-hook 'lsp)
-(add-hook 'c++-mode-hook 'lsp)
-(add-hook 'rust-mode-hook 'lsp)
-(add-hook 'js-mode-hook 'lsp)
-(add-hook 'go-mode-hook 'lsp)
-(require 'lsp-java)
-(add-hook 'java-mode-hook #'lsp)
-(require 'lsp-python-ms)
-(setq lsp-python-ms-auto-install-server t)
-(add-hook 'python-mode-hook #'lsp)
-(use-package lsp-python-ms
-  :ensure t
-  :init (setq lsp-python-ms-auto-install-server t)
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-python-ms)
-                         (lsp))))
-(setq lsp-clients-clangd-args
-      '("--header-insertion=never"
-        "--header-insertion-decorators=0"))
-(with-eval-after-load 'lsp-mode
-  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
-  (require 'dap-cpptools)
-  (yas-global-mode))
-
 ;; YASnippet
 (yas-global-mode 1)
 
@@ -132,27 +110,56 @@
   		     (when (equal my-company-point (point))
   		       (yas-expand))))
 
+;; LSP
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
+(add-hook 'go-mode-hook 'lsp)
+(require 'lsp-java)
+(add-hook 'java-mode-hook #'lsp)
+(add-hook 'js-mode-hook 'lsp)
+(require 'lsp-python-ms)
+(setq lsp-python-ms-auto-install-server t)
+(add-hook 'python-mode-hook #'lsp)
+(use-package lsp-python-ms
+  :ensure t
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-python-ms)
+                         (lsp))))
+(add-hook 'rust-mode-hook 'lsp)
+(setq lsp-clients-clangd-args
+      '("--header-insertion=never"
+        "--header-insertion-decorators=0"))
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (require 'dap-cpptools)
+  (yas-global-mode))
+
 ;; Flycheck
 (add-hook 'c-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook 'flycheck-mode)
-(add-hook 'rust-mode-hook 'flycheck-mode)
-(add-hook 'js-mode-hook 'flycheck-mode)
 (add-hook 'go-mode-hook 'flycheck-mode)
+(add-hook 'java-mode-hook 'flycheck-mode)
+(add-hook 'js-mode-hook 'flycheck-mode)
+(add-hook 'python-mode-hook 'flycheck-mode)
+(add-hook 'rust-mode-hook 'flycheck-mode)
 
 ;; Smartparens
 (require 'smartparens-config)
+(add-hook 'asm-mode-hook #'smartparens-mode)
 (add-hook 'c-mode-hook #'smartparens-mode)
 (add-hook 'c++-mode-hook #'smartparens-mode)
-(add-hook 'asm-mode-hook #'smartparens-mode)
+(add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
+(add-hook 'go-mode-hook #'smartparens-mode)
+(add-hook 'java-mode-hook #'smartparens-mode)
+(add-hook 'js-mode-hook #'smartparens-mode)
 (add-hook 'python-mode-hook #'smartparens-mode)
 (add-hook 'rust-mode-hook #'smartparens-mode)
 (add-hook 'rustic-mode-hook #'smartparens-mode)
-(add-hook 'js-mode-hook #'smartparens-mode)
-(add-hook 'go-mode-hook #'smartparens-mode)
-(add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
+(add-hook 'verilog-mode #'smartparens-mode)
 
 ;; When you press RET, the curly braces automatically add another newline.
-(sp-with-modes '(c-mode c++-mode asm-mode python-mode rust-mode rustic-mode js-mode)
+(sp-with-modes '(asm-mode c-mode c++-mode emacs-lisp-mode java-mode js-mode python-mode rust-mode rustic-mode verilog-mode)
   (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
   (sp-local-pair "/*" "*/" :post-handlers '(("| " "SPC") ("* ||\n[i]" "RET"))))
 (setq sp-escape-quotes-after-insert nil)
@@ -174,9 +181,6 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
-;; Dracula
-(load-theme 'dracula t)
-
 ;; Face Attributes
 (set-face-foreground 'mode-line-inactive "light gray")
 (set-face-foreground 'mode-line "white")
@@ -192,6 +196,24 @@
 
 ;; Column Number Mode
 (column-number-mode 1)
+
+;; Initialize frame size and position
+(defun initialize-frame ()
+  (let* ((base-factor 0.5)
+	 (a-width (* (display-pixel-width) base-factor))
+         (a-height (* (display-pixel-height) base-factor))
+         (a-left (truncate (/ (- (display-pixel-width) a-width) 2)))
+	 (a-top (truncate (/ (- (display-pixel-height) a-height) 2))))
+    (set-frame-position (selected-frame) a-left a-top)
+    (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
+(setq frame-resize-pixelwise t)
+(initialize-frame)
+
+;; Place auto-save files into system's temporary file
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 ;; Tabs
 (setq tab-width 8)
@@ -231,21 +253,3 @@
 
 ;; JavaScript Mode
 (setq js-indent-level 2)
-
-;; Initialize frame size and position
-(defun initialize-frame ()
-  (let* ((base-factor 0.5)
-	 (a-width (* (display-pixel-width) base-factor))
-         (a-height (* (display-pixel-height) base-factor))
-         (a-left (truncate (/ (- (display-pixel-width) a-width) 2)))
-	 (a-top (truncate (/ (- (display-pixel-height) a-height) 2))))
-    (set-frame-position (selected-frame) a-left a-top)
-    (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
-(setq frame-resize-pixelwise t)
-(initialize-frame)
-
-;; Place auto-save files into system's temporary file
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
