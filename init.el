@@ -37,7 +37,7 @@
  '(custom-safe-themes
    '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(smart-tabs-mode magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -140,9 +140,6 @@
   (sp-local-pair "/*" "*/" :post-handlers '(("| " "SPC") ("* ||\n[i]" "RET"))))
 (setq sp-escape-quotes-after-insert nil)
 
-;; Smart Tabs
-(smart-tabs-insinuate 'c)
-
 ;; Windmove
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
@@ -183,6 +180,9 @@
 (setq-default tab-width 8)
 (setq-default indent-tabs-mode nil)
 
+;; Delete Selection Mode
+(delete-selection-mode 1)
+
 ;; Org Mode
 (eval-after-load "org"
   '(require 'ox-md nil t))
@@ -217,7 +217,6 @@
 ;; Frame
 (add-to-list 'default-frame-alist '(width . 160))
 (add-to-list 'default-frame-alist '(height . 48))
-
 
 ;; Place auto-save files into system's temporary file
 (setq backup-directory-alist
