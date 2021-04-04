@@ -8,9 +8,9 @@ Emofacs is my own Emacs configuration.
 
 ## Dependency
 
-* [Emacs 27.1](https://www.gnu.org/software/emacs/) (This is my version, but Emofacs should also work in some older versions.)
+* [Emacs 27.2](https://www.gnu.org/software/emacs/)
 
-Here are also some other dependencies that are only necessary if you want to code the corresponding language. They are listed here, because they are not part of the LSP package we use, so they cannot be initialized automatically by our package manager. For example, if you don't want to code Rust, then you do not need it. Also, you may choose your own language server if you want. If you want to code a language XXX not in the list, just google "language server for XXX" and install it.
+This is my version, but Emofacs should also work in some older versions.
 
 * [clangd](https://clangd.llvm.org/) for C/C++
 * [rls](https://github.com/rust-lang/rls) for Rust
