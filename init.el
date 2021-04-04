@@ -177,8 +177,8 @@
 (column-number-mode 1)
 
 ;; Tabs
-(setq-default tab-width 8)
-(setq-default indent-tabs-mode nil)
+(setq tab-width 8)
+(setq indent-tabs-mode nil)
 
 ;; Delete Selection Mode
 (delete-selection-mode 1)
@@ -189,8 +189,8 @@
 
 ;; CC Mode
 (require 'cc-mode)
-(setq-default c-default-style "linux")
-(setq-default c-basic-offset 8)
+(setq c-default-style "linux")
+(setq c-basic-offset 8)
 (add-hook 'c-mode-common-hook
           (lambda () (setq indent-tabs-mode t)))
 (c-set-offset 'innamespace 0)
@@ -214,9 +214,17 @@
 ;; JavaScript Mode
 (setq js-indent-level 2)
 
-;; Frame
-(add-to-list 'default-frame-alist '(width . 160))
-(add-to-list 'default-frame-alist '(height . 48))
+;; Initialize frame size and position
+(defun initialize-frame ()
+  (let* ((base-factor 0.5)
+	 (a-width (* (display-pixel-width) base-factor))
+         (a-height (* (display-pixel-height) base-factor))
+         (a-left (truncate (/ (- (display-pixel-width) a-width) 2)))
+	 (a-top (truncate (/ (- (display-pixel-height) a-height) 2))))
+    (set-frame-position (selected-frame) a-left a-top)
+    (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
+(setq frame-resize-pixelwise t)
+(initialize-frame)
 
 ;; Place auto-save files into system's temporary file
 (setq backup-directory-alist
