@@ -12,10 +12,6 @@ Emofacs is my own Emacs configuration.
 
 This is my version, but Emofacs should also work in some older versions.
 
-* [clangd](https://clangd.llvm.org/) for C/C++
-* [rls](https://github.com/rust-lang/rls) for Rust
-* [gopls](https://pkg.go.dev/golang.org/x/tools/gopls) for Go
-
 **Note:** Emofacs is now being used mostly on macOS, so in theory it should also work on Linux and other Unix-like systems. However, we have not tested it on Windows yet.
 
 ## Installation
