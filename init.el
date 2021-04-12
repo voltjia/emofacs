@@ -37,7 +37,7 @@
  '(custom-safe-themes
    '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs-all-the-icons all-the-icons treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -81,11 +81,6 @@
 (setq treemacs-width 32)
 (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
 (define-key global-map (kbd "M-0") 'treemacs-select-window)
-
-;; Treemacs All The Icons
-;; Install resource fonts by 'M-x all-the-icons-install-fonts'
-(require 'treemacs-all-the-icons)
-(treemacs-load-theme "all-the-icons")
 
 ;; Treemacs Projectile
 (require 'treemacs-projectile)
