@@ -195,12 +195,12 @@
 ;; Initialize frame size and position
 (defun initialize-frame ()
   (let* ((base-factor 0.5)
-	 (a-width (* (display-pixel-width) base-factor))
-         (a-height (* (display-pixel-height) base-factor))
-         (a-left (truncate (/ (- (display-pixel-width) a-width) 2)))
-	 (a-top (truncate (/ (- (display-pixel-height) a-height) 2))))
-    (set-frame-position (selected-frame) a-left a-top)
-    (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
+	 (display-width (* (display-pixel-width) base-factor))
+         (display-height (* (display-pixel-height) base-factor))
+         (display-left (truncate (/ (- (display-pixel-width) display-width) 2)))
+	 (display-top (truncate (/ (- (display-pixel-height) display-height) 2))))
+    (set-frame-position (selected-frame) display-left display-top)
+    (set-frame-size (selected-frame) (truncate display-width) (truncate display-height) t)))
 (setq frame-resize-pixelwise t)
 (initialize-frame)
 

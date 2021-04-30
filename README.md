@@ -10,9 +10,11 @@ Emofacs is my own Emacs configuration.
 
 * [Emacs 27.2](https://www.gnu.org/software/emacs/)
 
-This is my version, but Emofacs should also work in some older versions.
+This is my Emacs version, but Emofacs should also work in some older versions.
 
-**Note:** Emofacs is now being used mostly on macOS, so in theory it should also work on Linux and other Unix-like systems. However, we have not tested it on Windows yet.
+* [LLVM](https://llvm.org/)
+
+This is only necessary when you want to code C/C++, because LLVM contains clangd, the language server recommended to use for C/C++ in LSP mode.
 
 ## Installation
 
@@ -22,7 +24,7 @@ Simply put `init.el` into `.emacs.d`, the standard location for additional per-u
 
 The installation time depends on your internet connection, because the packages need to be downloaded. It takes about 5 minutes on my personal computer at home. During installation, Emacs seems to be stuck, but it is not, so just wait patiently, but if the installation is not complete after 20 minutes, then there might be something wrong.
 
-Even if everything goes well, Emacs may still display some warnings and errors, but they only appear during the first-time initialization, so please ignore them. If you restart Emacs, everything is going to be fine from now on.
+Even if everything goes well, Emacs may still display some warnings and errors after initialization. Just ignore them and restart Emacs, and then there should be no warnings any more;
 
 ## Packages
 
