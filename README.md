@@ -22,7 +22,7 @@ For the convenience to configure an empty Emacs as simple as possible, most pack
 
 Simply put `init.el` into `.emacs.d`, the standard location for additional per-user Emacs-specific files, Emacs is going to configure itself automatically during the next startup. Or if you want, you may git clone this whole repository as your `.emacs.d`. In this way, you may update this configuration using git in the future. For more information about `.emacs.d`, please visit https://www.emacswiki.org/emacs/DotEmacsDotD.
 
-The installation time depends on your internet connection, because the packages need to be downloaded. It takes about 5 minutes on my personal computer at home. During installation, Emacs seems to be stuck, but it is not, so just wait patiently, but if the installation is not complete after 20 minutes, then there might be something wrong.
+The installation time depends on your internet connection, because the packages need to be downloaded. It takes about 5 minutes on my personal computer at home. During installation, Emacs seems to be stuck, but it is not, so just wait patiently, but if the installation is not complete after 20 minutes, then there might be something wrong. In order to use `all-the-icons` package, you need to manually install its fonts within Emacs by `M-x all-the-icons-install-fonts`. You may also choose to disable features using `all-the-icons`, although in this way Emofacs may look less pretty.
 
 Even if everything goes well, Emacs may still display some warnings and errors after initialization. Just ignore them and restart Emacs, and then there should be no warnings any more;
 
@@ -31,6 +31,10 @@ Even if everything goes well, Emacs may still display some warnings and errors a
 * [use-package](https://github.com/jwiegley/use-package) (allows you to isolate package configuration in a way that is both performance-oriented and, well, tidy)
 * [exec-path-from-shell](https://github.com/purcell/exec-path-from-shell) (ensures environment variables inside Emacs look the same as in the user's shell)
 * [Dracula](https://draculatheme.com/emacs/) (dark theme)
+* [all-the-icons](https://github.com/domtronn/all-the-icons.el) (used to include fancy icons)
+* [Power Line](https://github.com/milkypostman/powerline) (Emacs version of the Vim powerline)
+* [Dashboard](https://github.com/emacs-dashboard/emacs-dashboard) (a startup dashboard which provides certain information about your recent Emacs activities)
+* [Zoom](https://github.com/cyrus-and/zoom) (fixed and automatic balanced window layout for Emacs)
 * [Ivy](https://github.com/abo-abo/swiper) (generic completion mechanism)
 * [Projectile](https://github.com/bbatsov/projectile) (project interaction library)
 * [Treemacs](https://github.com/Alexander-Miller/treemacs) (tree layout file explorer)
