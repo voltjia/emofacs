@@ -37,9 +37,7 @@
  '(custom-safe-themes
    '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme))
- '(zoom-mode t nil (zoom))
- '(zoom-size '(0.618 . 0.618)))
+   '(powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -87,10 +85,8 @@
 (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
 
 ;; Zoom
-(custom-set-variables
- '(zoom-mode t))
-(custom-set-variables
- '(zoom-size '(0.618 . 0.618)))
+(zoom-mode)
+(setq zoom-size '(0.618 . 0.618))
 
 ;; Ivy
 (ivy-mode)
