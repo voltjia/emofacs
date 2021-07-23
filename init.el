@@ -271,10 +271,14 @@
 
 ;; CC Mode
 (require 'cc-mode)
-(setq c-default-style "linux")
-(setq c-basic-offset 8)
-(add-hook 'c-mode-common-hook
-          (lambda () (setq indent-tabs-mode t)))
+;; My C style
+;; (setq c-default-style "linux")
+;; (setq c-basic-offset 8)
+;; (add-hook 'c-mode-common-hook
+;;           (lambda () (setq indent-tabs-mode t)))
+;; My C++ style
+(setq c-default-style "k&r")
+(setq c-basic-offset 4)
 (setq c-backspace-function 'delete-backward-char)
 (c-set-offset 'innamespace 0)
 
