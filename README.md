@@ -12,9 +12,9 @@ Emofacs is my own Emacs configuration.
 
 This is my Emacs version, but Emofacs should also work in some older versions.
 
-* [LLVM](https://llvm.org/)
+* [Language Servers](https://langserver.org/)
 
-This is only necessary when you want to code C/C++, because LLVM contains clangd, the language server recommended to use for C/C++ in LSP mode.
+A language server is only necessary when you want to code in a specific programming language. You may choose from the available servers listed in the web page above. For example, if you would like to code in C/C++, then installing LLVM is a good idea, which contains clangd, a language server for C/C++. Most of the time, when there is no server detected for a specific source file, LSP mode prompts you whether to install a recommended one, then simply type `yes` to do so. However, there might be situations when LSP mode does not prompt, then please follow the installation instructions of a language server of your choice from the above web page.
 
 ## Installation
 
@@ -22,7 +22,7 @@ For the convenience to configure an empty Emacs as simple as possible, most pack
 
 Simply put `init.el` into `.emacs.d`, the standard location for additional per-user Emacs-specific files, Emacs is going to configure itself automatically during the next startup. Or if you want, you may git clone this whole repository as your `.emacs.d`. In this way, you may update this configuration using git in the future. For more information about `.emacs.d`, please visit https://www.emacswiki.org/emacs/DotEmacsDotD.
 
-The installation time depends on your internet connection, because the packages need to be downloaded. It takes about 5 minutes on my personal computer at home. During installation, Emacs seems to be stuck, but it is not, so just wait patiently, but if the installation is not complete after 20 minutes, then there might be something wrong. In order to use `all-the-icons` package, you need to manually install its fonts within Emacs by `M-x all-the-icons-install-fonts`. You may also choose to disable features using `all-the-icons`, although in this way Emofacs may look less pretty.
+The installation time depends on your Internet connection, because the packages need to be downloaded. It takes about 5 minutes on my personal computer at home. During installation, Emacs seems to be stuck, but it is not, so just wait patiently, but if the installation is not complete after 20 minutes, then there might be something wrong. In order to use `all-the-icons` package, you need to manually install its fonts within Emacs by `M-x all-the-icons-install-fonts`. You may also choose to disable features using `all-the-icons`, although in this way Emofacs may look less pretty.
 
 Even if everything goes well, Emacs may still display some warnings and errors after initialization. Just ignore them and restart Emacs, and then there should be no warnings any more;
 
@@ -39,7 +39,7 @@ Even if everything goes well, Emacs may still display some warnings and errors a
 * [Projectile](https://github.com/bbatsov/projectile) (project interaction library)
 * [Treemacs](https://github.com/Alexander-Miller/treemacs) (tree layout file explorer)
 * [Company](https://company-mode.github.io/) (text completion framework)
-* [LSP](https://emacs-lsp.github.io/lsp-mode/) (language server protocal)
+* [LSP](https://emacs-lsp.github.io/lsp-mode/) (language server protocol)
 * [YASnippet](https://github.com/joaotavora/yasnippet) (template system)
 * [Flycheck](https://www.flycheck.org/en/latest/) (modern on-the-fly syntax checking extension)
 * [Smartparens](https://github.com/Fuco1/smartparens) (dealing with pairs)
@@ -49,7 +49,7 @@ They are the external packages and their links.
 
 ## Usage
 
-The learning curve of Emacs is steep, but once you get it, you may feel the power that Emacs brings you. With emacs, you may discover that a mouse is not that important. Most actions can be done using your keyboard withouy your hands moving away.
+The learning curve of Emacs is steep, but once you get it, you may feel the power that Emacs brings you. With emacs, you may discover that a mouse is not that important. Most actions can be done using your keyboard without your hands moving away.
 
 However, I am not going to teach you how to use Emacs or any of the specific packages mentioned above. Instead, I have listed their official websites or GitHub links so that you may easily find documents on each of them and begin exploring.
 
