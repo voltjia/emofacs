@@ -35,9 +35,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
+   (quote
+    ("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default)))
  '(package-selected-packages
-   '(powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   (quote
+    (powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -259,8 +261,8 @@
       `((".*" ,temporary-file-directory t)))
 
 ;; Tabs
-(setq tab-width 8)
-(setq indent-tabs-mode nil)
+(setq-default tab-width 8)
+(setq-default indent-tabs-mode nil)
 
 ;; Delete Selection Mode
 (delete-selection-mode 1)
@@ -271,15 +273,8 @@
 
 ;; CC Mode
 (require 'cc-mode)
-;; My C style
-;; (setq c-default-style "linux")
-;; (setq c-basic-offset 8)
-;; (add-hook 'c-mode-common-hook
-;;           (lambda () (setq indent-tabs-mode t)))
-;; My C++ style
 (setq c-default-style "k&r")
 (setq c-basic-offset 4)
-(setq c-backspace-function 'delete-backward-char)
 (c-set-offset 'innamespace 0)
 
 ;; Asm Mode
