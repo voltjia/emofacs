@@ -35,11 +35,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default)))
+   '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   (quote
-    (powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme))))
+   '(powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -67,8 +65,8 @@
 (load-theme 'dracula t)
 
 ;; All The Icons
-;; Please install the fonts manually by 'M-x all-the-icons-install-fonts' after you initialize Emacs.
 (require 'all-the-icons)
+(unless (member "all-the-icons" (font-family-list)) (all-the-icons-install-fonts))
 
 ;; Power Line
 (require 'powerline)
