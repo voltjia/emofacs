@@ -4,7 +4,7 @@ Emofacs is my own Emacs configuration.
 
 ## Introduction
 
-"Emofacs" == "E" + "mofa" + "cs", which is a combination of "Emacs", the name of the famous editor, and "mofa", the first part of my GitHub username. As a big fan of Emacs, I store my configuration in this repository both as a backup in case my local one is lost and for sharing. Anybody interested in my configuration may feel free to try it.
+"Emofacs" == "E" + "mofa" + "cs", which is a combination of "Emacs", the name of the famous editor, and "mofa", pinyin for the Chinese word for "magic". As a big fan of Emacs, I store my configuration in this repository both as a backup in case my local one is lost and for sharing. Anybody interested in my configuration may feel free to try it.
 
 ## Dependency
 
@@ -22,9 +22,9 @@ For the convenience to configure an empty Emacs as simple as possible, most pack
 
 Simply put `init.el` into `.emacs.d`, the standard location for additional per-user Emacs-specific files, Emacs is going to configure itself automatically during the next startup. Or if you want, you may git clone this whole repository as your `.emacs.d`. In this way, you may update this configuration using git in the future. For more information about `.emacs.d`, please visit https://www.emacswiki.org/emacs/DotEmacsDotD.
 
-The installation time depends on your Internet connection, because the packages need to be downloaded. It takes about 5 minutes on my personal computer at home. During installation, Emacs seems to be stuck, but it is not, so just wait patiently, but if the installation is not complete after 20 minutes, then there might be something wrong. In order to use `all-the-icons` package, you need to manually install its fonts within Emacs by `M-x all-the-icons-install-fonts`. You may also choose to disable features using `all-the-icons`, although in this way Emofacs may look less pretty.
+The installation time depends on your Internet connection, because the packages need to be downloaded. It takes about 5 minutes on my personal computer at home. During installation, Emacs may seem to be stuck, but it is not, so just wait patiently, but if the installation is not complete after 20 minutes, then there might be something wrong. In order to use `all-the-icons` package, Emacs may prompt you to install `all-the-icons` fonts if none detected, type `yes` when prompted, or you may choose to disable features using `all-the-icons`, although in this way Emofacs may look less pretty.
 
-Even if everything goes well, Emacs may still display some warnings and errors after initialization. Just ignore them and restart Emacs, and then there should be no warnings any more;
+Even if everything goes well, Emacs may still display some warnings and errors after initialization, and the `all-the-icons` theme may not be loaded the first time Emacs starts up. Just ignore them and restart Emacs, and then Emofacs should work properly.
 
 ## Packages
 
