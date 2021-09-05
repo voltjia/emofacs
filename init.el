@@ -288,10 +288,15 @@
 (setq c-basic-offset 4)
 (c-set-offset 'innamespace 0)
 
+;; Asm Mode
+(defun my-asm-mode-hook ()
+  (local-unset-key (vector asm-comment-char))
+  (setq tab-always-indent (default-value 'tab-always-indent))
+  (electric-indent-local-mode -1))
+(add-hook 'asm-mode-hook #'my-asm-mode-hook)
+
 ;; Rust Mode
 (require 'rust-mode)
-(add-hook 'rust-mode-hook
-          (lambda () (setq indent-tabs-mode nil)))
 (setq rust-format-on-save t)
 (define-key rust-mode-map (kbd "C-c C-c") 'rust-run)
 
