@@ -37,7 +37,7 @@
  '(custom-safe-themes
    '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(dtrt-indent powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -258,6 +258,19 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+;; Indentation
+(add-hook 'asm-mode-hook 'dtrt-indent-mode)
+(add-hook 'c-mode-hook 'dtrt-indent-mode)
+(add-hook 'c++-mode-hook 'dtrt-indent-mode)
+(add-hook 'emacs-lisp-mode-hook 'dtrt-indent-mode)
+(add-hook 'go-mode-hook 'dtrt-indent-mode)
+(add-hook 'java-mode-hook 'dtrt-indent-mode)
+(add-hook 'js-mode-hook 'dtrt-indent-mode)
+(add-hook 'python-mode-hook 'dtrt-indent-mode)
+(add-hook 'rust-mode-hook 'dtrt-indent-mode)
+(add-hook 'rustic-mode-hook 'dtrt-indent-mode)
+(add-hook 'verilog-mode 'dtrt-indent-mode)
+
 ;; Tabs
 (setq-default tab-width 8)
 (setq-default indent-tabs-mode nil)
@@ -274,12 +287,6 @@
 (setq c-default-style "k&r")
 (setq c-basic-offset 4)
 (c-set-offset 'innamespace 0)
-
-;; Asm Mode
-(setq electric-indent-inhibit t)
-
-;; Verilog Mode
-(setq verilog-auto-newline nil)
 
 ;; Rust Mode
 (require 'rust-mode)
