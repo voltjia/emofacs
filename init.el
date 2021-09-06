@@ -66,7 +66,8 @@
 
 ;; All The Icons
 (require 'all-the-icons)
-(unless (member "all-the-icons" (font-family-list)) (all-the-icons-install-fonts))
+(when (display-graphic-p)
+  (unless (member "all-the-icons" (font-family-list)) (all-the-icons-install-fonts)))
 
 ;; Power Line
 (require 'powerline)
@@ -250,7 +251,7 @@
     (set-frame-position (selected-frame) display-left display-top)
     (set-frame-size (selected-frame) (truncate display-width) (truncate display-height) t)))
 (setq frame-resize-pixelwise t)
-(initialize-frame)
+(when (display-graphic-p) (initialize-frame))
 
 ;; Place auto-save files into system's temporary file
 (setq backup-directory-alist
