@@ -272,14 +272,14 @@
 
 ;; CC Mode
 (require 'cc-mode)
-(setq c-default-style "k&r")
-(setq c-basic-offset 4)
-(c-set-offset 'innamespace 0)
+(setq c-default-style "linux")
+(add-hook 'c-mode-hook '(lambda () (setq indent-tabs-mode t)))
 
 ;; Asm Mode
 (defun my-asm-mode-hook ()
   (local-unset-key (vector asm-comment-char))
-  (setq tab-always-indent (default-value 'tab-always-indent)))
+  (setq tab-always-indent (default-value 'tab-always-indent))
+  (setq indent-tabs-mode t))
 (add-hook 'asm-mode-hook #'my-asm-mode-hook)
 
 ;; Rust Mode
