@@ -241,17 +241,8 @@
 ;; Column Number Mode
 (column-number-mode 1)
 
-;; Initialize frame size and position
-(defun initialize-frame ()
-  (let* ((base-factor 0.5)
-	 (display-width (* (display-pixel-width) base-factor))
-         (display-height (* (display-pixel-height) base-factor))
-         (display-left (truncate (/ (- (display-pixel-width) display-width) 2)))
-	 (display-top (truncate (/ (- (display-pixel-height) display-height) 2))))
-    (set-frame-position (selected-frame) display-left display-top)
-    (set-frame-size (selected-frame) (truncate display-width) (truncate display-height) t)))
-(setq frame-resize-pixelwise t)
-(when (display-graphic-p) (initialize-frame))
+;; Start Emacs in fullscreen mode
+(add-hook 'emacs-startup-hook 'toggle-frame-fullscreen)
 
 ;; Place auto-save files into system's temporary file
 (setq backup-directory-alist
