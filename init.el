@@ -267,10 +267,7 @@
 (add-hook 'c-mode-hook '(lambda () (setq indent-tabs-mode t)))
 
 ;; Asm Mode
-(defun my-asm-mode-hook ()
-  (local-unset-key (vector asm-comment-char))
-  (setq tab-always-indent (default-value 'tab-always-indent))
-  (setq indent-tabs-mode t))
+(defun my-asm-mode-hook () (setq indent-tabs-mode t))
 (add-hook 'asm-mode-hook #'my-asm-mode-hook)
 
 ;; Rust Mode
