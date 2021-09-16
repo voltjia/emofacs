@@ -76,7 +76,6 @@
 ;; Dashboard
 (require 'dashboard)
 (dashboard-setup-startup-hook)
-(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 (setq dashboard-banner-logo-title "E + mofa + cs")
 (setq dashboard-center-content t)
 (setq dashboard-items '((projects . 8)
