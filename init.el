@@ -252,10 +252,6 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;; Tabs
-(setq-default tab-width 8)
-(setq-default indent-tabs-mode nil)
-
 ;; Delete Selection Mode
 (delete-selection-mode 1)
 
@@ -266,11 +262,6 @@
 ;; CC Mode
 (require 'cc-mode)
 (setq c-default-style "linux")
-(add-hook 'c-mode-hook '(lambda () (setq indent-tabs-mode t)))
-
-;; Asm Mode
-(defun my-asm-mode-hook () (setq indent-tabs-mode t))
-(add-hook 'asm-mode-hook #'my-asm-mode-hook)
 
 ;; Rust Mode
 (require 'rust-mode)
