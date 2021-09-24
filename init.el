@@ -96,6 +96,9 @@
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
+;; Iedit
+(require 'iedit)
+
 ;; Ido
 (ido-mode 1)
 (ido-everywhere 1)
