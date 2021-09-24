@@ -159,6 +159,7 @@
                          (require 'lsp-python-ms)
                          (lsp))))
 (add-hook 'rust-mode-hook 'lsp)
+(add-hook 'latex-mode-hook 'lsp)
 (setq lsp-clients-clangd-args
       '("--header-insertion=never"
         "--header-insertion-decorators=0"))
