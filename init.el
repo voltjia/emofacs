@@ -37,7 +37,7 @@
  '(custom-safe-themes
    '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(ido-completing-read+ iedit lsp-ivy lsp-ui latex-preview-pane counsel-projectile powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens dracula-theme)))
+   '(zenburn-theme ido-completing-read+ iedit lsp-ivy lsp-ui latex-preview-pane counsel-projectile powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -61,8 +61,8 @@
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
-;; Dracula
-(load-theme 'dracula t)
+;; Zenburn
+(load-theme 'zenburn t)
 
 ;; All The Icons
 (require 'all-the-icons)
