@@ -226,14 +226,6 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
-;; Face Attributes
-(set-face-foreground 'mode-line-inactive "light gray")
-(set-face-foreground 'mode-line "white")
-(set-face-foreground 'line-number "gray")
-(set-face-foreground 'font-lock-comment-face "gray")
-(set-face-foreground 'font-lock-comment-delimiter-face "gray")
-(set-face-foreground 'font-lock-doc-face "gray")
-
 ;; Line Number Mode
 (if (version<= "26.0.50" emacs-version)
     (global-display-line-numbers-mode)
