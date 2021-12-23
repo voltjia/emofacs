@@ -253,7 +253,7 @@
 
 ;; CC Mode
 (require 'cc-mode)
-(setq c-default-style "linux")
+(setq c-default-style "user")
 
 ;; Rust Mode
 (require 'rust-mode)
