@@ -247,6 +247,9 @@
 ;; Delete Selection Mode
 (delete-selection-mode 1)
 
+;; No Tabs
+(setq-default indent-tabs-mode nil)
+
 ;; Org Mode
 (eval-after-load "org"
   '(require 'ox-md nil t))
