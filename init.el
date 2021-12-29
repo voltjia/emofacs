@@ -267,4 +267,7 @@
 (use-package rustic)
 
 ;; JavaScript Mode
-(setq js-indent-level 2)
+(setq-default js-indent-level 2)
+
+;; CSS Mode
+(setq-default css-indent-offset 2)
