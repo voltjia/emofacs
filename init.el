@@ -253,6 +253,7 @@
 ;; Org Mode
 (eval-after-load "org"
   '(require 'ox-md nil t))
+(setq org-adapt-indentation nil)
 
 ;; CC Mode
 (require 'cc-mode)
