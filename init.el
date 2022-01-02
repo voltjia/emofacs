@@ -214,6 +214,9 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+;; Ace Window
+(global-set-key (kbd "M-o") 'ace-window)
+
 ;; Winner
 (when (fboundp 'winner-mode)
   (winner-mode 1))
