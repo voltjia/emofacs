@@ -37,7 +37,7 @@
  '(custom-safe-themes
    '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(zenburn-theme ido-completing-read+ iedit lsp-ivy lsp-ui latex-preview-pane counsel-projectile powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens)))
+   '(lsp-haskell zenburn-theme ido-completing-read+ iedit lsp-ivy lsp-ui latex-preview-pane counsel-projectile powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -173,6 +173,9 @@
 (add-hook 'rust-mode-hook 'lsp)
 (add-hook 'latex-mode-hook 'lsp)
 (add-hook 'markdown-mode-hook 'lsp)
+(require 'lsp-haskell)
+(add-hook 'haskell-mode-hook #'lsp)
+(add-hook 'haskell-literate-mode-hook #'lsp)
 (setq lsp-clients-clangd-args
       '("--header-insertion=never"
         "--header-insertion-decorators=0"))
@@ -180,9 +183,6 @@
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
   (require 'dap-cpptools)
   (yas-global-mode))
-(require 'lsp-haskell)
-(add-hook 'haskell-mode-hook #'lsp)
-(add-hook 'haskell-literate-mode-hook #'lsp)
 
 ;; Flycheck
 (add-hook 'c-mode-hook #'flycheck-mode)
