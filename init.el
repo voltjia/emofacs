@@ -37,7 +37,7 @@
  '(custom-safe-themes
    '("e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" default))
  '(package-selected-packages
-   '(lsp-haskell zenburn-theme ido-completing-read+ iedit lsp-ivy lsp-ui latex-preview-pane counsel-projectile powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-python-ms lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens)))
+   '(lsp-haskell lsp-pyright zenburn-theme ido-completing-read+ iedit lsp-ivy lsp-ui latex-preview-pane counsel-projectile powerline zoom treemacs-all-the-icons org-dashboard dashboard lsp-java dap-mode which-key magit go-mode exec-path-from-shell rustic rust-mode yasnippet-snippets yasnippet treemacs-projectile treemacs projectile lsp-mode counsel ivy flycheck company smartparens)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -155,24 +155,20 @@
   		       (yas-expand))))
 
 ;; LSP
-(add-hook 'c-mode-hook 'lsp)
-(add-hook 'c++-mode-hook 'lsp)
-(add-hook 'go-mode-hook 'lsp)
+(add-hook 'c-mode-hook #'lsp)
+(add-hook 'c++-mode-hook #'lsp)
+(add-hook 'go-mode-hook #'lsp)
 (require 'lsp-java)
 (add-hook 'java-mode-hook #'lsp)
-(add-hook 'js-mode-hook 'lsp)
-(require 'lsp-python-ms)
-(setq lsp-python-ms-auto-install-server t)
-(add-hook 'python-mode-hook #'lsp)
-(use-package lsp-python-ms
+(add-hook 'js-mode-hook #'lsp)
+(use-package lsp-pyright
   :ensure t
-  :init (setq lsp-python-ms-auto-install-server t)
   :hook (python-mode . (lambda ()
-                         (require 'lsp-python-ms)
+                         (require 'lsp-pyright)
                          (lsp))))
-(add-hook 'rust-mode-hook 'lsp)
-(add-hook 'latex-mode-hook 'lsp)
-(add-hook 'markdown-mode-hook 'lsp)
+(add-hook 'rust-mode-hook #'lsp)
+(add-hook 'latex-mode-hook #'lsp)
+(add-hook 'markdown-mode-hook #'lsp)
 (require 'lsp-haskell)
 (add-hook 'haskell-mode-hook #'lsp)
 (add-hook 'haskell-literate-mode-hook #'lsp)
