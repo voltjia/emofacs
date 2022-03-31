@@ -27,8 +27,8 @@
   :straight t
   :config
   (ivy-mode)
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t))
+  (setq ivy-use-virtual-buffers t
+        enable-recursive-minibuffers t))
 
 ;;; Swiper
 (use-package swiper
@@ -61,9 +61,9 @@
   :straight t
   :hook (after-init . global-company-mode)
   :config
-  (setq company-idle-delay 0)
-  (setq company-minimum-prefix-length 1)
-  (setq company-show-numbers t))
+  (setq company-idle-delay 0
+        company-minimum-prefix-length 1
+        company-show-numbers t))
 
 ;;; Iedit
 (use-package iedit
@@ -169,15 +169,15 @@
   :straight t
   :config
   (dashboard-setup-startup-hook)
-  (setq dashboard-banner-logo-title "E + mofa + cs")
-  (setq dashboard-startup-banner 'logo)
-  (setq dashboard-center-content t)
-  (setq dashboard-items '((projects . 8)
-                          (recents . 8)))
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-set-navigator t)
-  (setq dashboard-set-init-info t))
+  (setq dashboard-banner-logo-title "E + mofa + cs"
+        dashboard-startup-banner 'logo
+        dashboard-center-content t
+        dashboard-items '((projects . 8)
+                          (recents . 8))
+        dashboard-set-heading-icons t
+        dashboard-set-file-icons t
+        dashboard-set-navigator t
+        dashboard-set-init-info t))
 
 ;;; powerline
 (use-package powerline
@@ -198,9 +198,6 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
-;; Use spaces instead of tabs when indenting.
-(setq-default indent-tabs-mode nil)
-
 ;; Turn off alarms completely.
 (setq ring-bell-function 'ignore)
 
@@ -213,3 +210,9 @@
 
 ;; Start Emacs in fullscreen mode.
 (add-hook 'emacs-startup-hook 'toggle-frame-fullscreen)
+
+;; Only immediately display :emergency and :error warnings.
+(setq warning-minimum-level :error)
+
+;; Use spaces instead of tabs when indenting.
+(setq-default indent-tabs-mode nil)
