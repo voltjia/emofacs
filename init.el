@@ -22,6 +22,12 @@
   :config
   (exec-path-from-shell-initialize))
 
+;;; vterm
+(use-package vterm
+  :straight t
+  :config
+  (add-to-list 'vterm-keymap-exceptions "M-0"))
+
 ;;; Ivy
 (use-package ivy
   :straight t
@@ -104,6 +110,8 @@
   (treemacs-fringe-indicator-mode t)
   :bind
   (:map global-map
+        ("M-0" . treemacs-select-window))
+  (:map vterm-mode-map
         ("M-0" . treemacs-select-window)))
 
 ;;; treemacs-projectile
