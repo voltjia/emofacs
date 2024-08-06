@@ -143,35 +143,6 @@
   (smartparens-global-mode t)
   (show-smartparens-global-mode t))
 
-;;; Flycheck
-(use-package flycheck
-  :straight t
-  :init (global-flycheck-mode))
-
-;;; LSP
-(use-package lsp-mode
-  :straight t
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook ((prog-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
-
-;;; lsp-ui
-(use-package lsp-ui
-  :straight t
-  :commands lsp-ui-mode)
-
-;;; lsp-ivy
-(use-package lsp-ivy
-  :straight t
-  :commands lsp-ivy-workspace-symbol)
-
-;;; lsp-treemacs
-(use-package lsp-treemacs
-  :straight t
-  :commands lsp-treemacs-errors-list)
-
 ;;; Zenburn
 (use-package zenburn-theme
   :straight t
@@ -198,6 +169,14 @@
   :straight t
   :config
   (powerline-default-theme))
+
+;;; Eglot
+(use-package eglot
+  :ensure t
+  :hook
+  (prog-mode . eglot-ensure)
+  :config
+  (add-hook 'after-save-hook 'eglot-format))
 
 ;; Place auto-save files to a dedicated directory.
 (setq backup-directory-alist
