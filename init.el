@@ -63,7 +63,13 @@
   :config
   (setq company-idle-delay 0
         company-minimum-prefix-length 1
-        company-show-numbers t))
+        company-show-numbers t)
+  :bind
+  (:map company-active-map
+        ("RET" . nil)
+        ("<return>" . nil)
+        ("TAB" . company-complete-selection)
+        ("<tab>" . company-complete-selection)))
 
 ;;; Iedit
 (use-package iedit
