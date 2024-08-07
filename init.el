@@ -91,6 +91,11 @@
   (unless (member "all-the-icons" (font-family-list))
     (all-the-icons-install-fonts)))
 
+;;; Emojify
+(use-package emojify
+  :straight t
+  :hook (after-init . global-emojify-mode))
+
 ;;; Treemacs
 (use-package treemacs
   :straight t
