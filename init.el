@@ -170,6 +170,13 @@
   :config
   (add-hook 'after-save-hook 'eglot-format))
 
+;;; Term Mode
+(use-package term
+  :config
+  (define-key term-raw-map (kbd "C-x") nil)
+  (define-key term-raw-map (kbd "M-o") nil)
+  (define-key term-raw-map (kbd "M-0") nil))
+
 ;; Place auto-save files to a dedicated directory.
 (setq backup-directory-alist
       `(("." . ,(concat user-emacs-directory "backups"))))
