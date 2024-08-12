@@ -213,3 +213,6 @@
 
 ;; Use spaces instead of tabs when indenting.
 (setq-default indent-tabs-mode nil)
+
+;; Avoid saving active regions to the primary selection.
+(setq select-active-regions nil)
