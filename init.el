@@ -167,14 +167,6 @@
   :config
   (powerline-default-theme))
 
-;;; Eglot
-(use-package eglot
-  :ensure t
-  :hook
-  (prog-mode . eglot-ensure)
-  :config
-  (add-hook 'after-save-hook 'eglot-format))
-
 ;;; Term Mode
 (use-package term
   :config
