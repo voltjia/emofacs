@@ -197,6 +197,12 @@
 ;; Display the current column number.
 (setq column-number-mode t)
 
+;; Disable the menu bar.
+(menu-bar-mode -1)
+
+;; Disable the tool bar.
+(tool-bar-mode -1)
+
 ;; Start Emacs in fullscreen mode.
 (add-hook 'emacs-startup-hook 'toggle-frame-fullscreen)
 
