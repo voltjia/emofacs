@@ -208,3 +208,7 @@
 
 ;; Avoid saving active regions to the primary selection.
 (setq select-active-regions nil)
+
+;; Set the font to JetBrains Mono if it's available.
+(if (member "JetBrains Mono" (font-family-list))
+    (set-face-attribute 'default nil :family "JetBrains Mono"))
