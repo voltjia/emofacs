@@ -170,6 +170,7 @@
 (use-package term
   :config
   (define-key term-raw-map (kbd "C-x") nil)
+  (define-key term-raw-map (kbd "M-x") nil)
   (define-key term-raw-map (kbd "M-o") nil)
   (define-key term-raw-map (kbd "M-0") nil))
 
