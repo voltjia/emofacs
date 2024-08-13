@@ -68,8 +68,7 @@
   (:map company-active-map
         ("RET" . nil)
         ("<return>" . nil)
-        ("TAB" . company-complete-selection)
-        ("<tab>" . company-complete-selection)))
+        ("C-f" . company-complete-selection)))
 
 ;;; Iedit
 (use-package iedit
