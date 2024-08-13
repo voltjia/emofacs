@@ -12,6 +12,7 @@
 
 ;; Set Chinese font.
 (defun get-han-font ()
+  "Return the name of an available Chinese font based on the current operating system."
   (pcase system-type
     ('windows-nt
      (or (car (seq-filter (lambda (font) (member font (font-family-list)))
