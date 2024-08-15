@@ -218,3 +218,11 @@
 ;; Set the font to JetBrains Mono if it's available.
 (if (member "JetBrains Mono" (font-family-list))
     (set-face-attribute 'default nil :family "JetBrains Mono"))
+
+;; Make it easy to load a file from the user Emacs directory interactively.
+(defun emofacs-load-file ()
+  "Load an Emacs Lisp file from the user Emacs directory."
+  (interactive)
+  (let* ((files (directory-files user-emacs-directory nil "\\.el$"))
+         (file (completing-read "[emofacs] Load file: " files nil t)))
+    (load-file (expand-file-name file user-emacs-directory))))
