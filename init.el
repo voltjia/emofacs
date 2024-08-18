@@ -215,6 +215,44 @@
 ;; Avoid saving active regions to the primary selection.
 (setq select-active-regions nil)
 
+;; Guide the user to install the JetBrains Mono font.
+(defun get-latest-jetbrains-mono-release-url ()
+  "Fetch the download URL for the latest JetBrains Mono font release."
+  (let* ((url-request-extra-headers '(("User-Agent" . "Emacs")))
+         (url "https://api.github.com/repos/JetBrains/JetBrainsMono/releases/latest")
+         (json (with-temp-buffer
+                 (url-insert-file-contents url)
+                 (goto-char (point-min))
+                 (json-read)))
+         (asset (seq-find (lambda (a) (string-match-p "\\.zip$" (alist-get 'browser_download_url a)))
+                          (alist-get 'assets json))))
+    (alist-get 'browser_download_url asset)))
+
+(defun install-jetbrains-mono-font ()
+  "Download and install the latest JetBrains Mono font."
+  (if (not (eq system-type 'gnu/linux))
+      (message "Automatic font installation is not supported on this system.")
+    (when (yes-or-no-p "Do you want to install the JetBrains Mono font?")
+      (let* ((download-url (get-latest-jetbrains-mono-release-url))
+             (temp-file (make-temp-file "jetbrains-mono-" nil ".zip"))
+             (fonts-dir (expand-file-name "~/.local/share/fonts")))
+        (unless (file-directory-p fonts-dir)
+          (make-directory fonts-dir t))
+        (url-copy-file download-url temp-file t)
+        (unwind-protect
+            (progn
+              (shell-command-to-string
+               (format "unzip -o %s -d %s" (shell-quote-argument temp-file) (shell-quote-argument fonts-dir)))
+              (shell-command-to-string "fc-cache -f -v")
+              (message "JetBrains Mono font has been installed. Restart Emacs to take effect."))
+          (delete-file temp-file))))))
+
+(defun font-installed-p (font-name)
+  "Check if FONT-NAME is available on the system."
+  (not (null (find-font (font-spec :name font-name)))))
+
+(unless (font-installed-p "JetBrains Mono") (install-jetbrains-mono-font))
+
 ;; Set the font to JetBrains Mono if it's available.
 (if (member "JetBrains Mono" (font-family-list))
     (set-face-attribute 'default nil :family "JetBrains Mono"))
