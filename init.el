@@ -200,6 +200,9 @@
 ;; Disable the menu bar.
 (menu-bar-mode -1)
 
+;; Disable the scroll bar.
+(scroll-bar-mode -1)
+
 ;; Disable the tool bar.
 (tool-bar-mode -1)
 
