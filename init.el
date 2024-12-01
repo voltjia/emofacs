@@ -260,10 +260,52 @@
 (if (member "JetBrains Mono" (font-family-list))
     (set-face-attribute 'default nil :family "JetBrains Mono"))
 
-;; Make it easy to load a file from the user Emacs directory interactively.
-(defun emofacs-load-file ()
-  "Load an Emacs Lisp file from the user Emacs directory."
-  (interactive)
-  (let* ((files (directory-files user-emacs-directory nil "\\.el$"))
-         (file (completing-read "[emofacs] Load file: " files nil t)))
-    (load-file (expand-file-name file user-emacs-directory))))
+;;; Markdown
+(use-package markdown-mode
+  :straight t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init
+  (if (executable-find "pandoc")
+      (setq markdown-command '("pandoc" "--from=markdown" "--to=html5"))
+    (message "Pandoc is not found. Markdown preview may not work as expected.")))
+
+;;; Rust
+(use-package rust-mode
+  :straight t
+  :config
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+                 '((rust-ts-mode rust-mode) .
+                   ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))))
+
+;;; Chinese
+;; Set Chinese input method.
+(use-package pyim
+  :straight t
+  :config
+  (setq default-input-method "pyim"))
+
+(use-package pyim-basedict
+  :straight t
+  :config
+  (pyim-basedict-enable))
+
+;; Set Chinese font.
+(defun get-han-font ()
+  "Return the name of an available Chinese font based on the current operating system."
+  (pcase system-type
+    ('windows-nt
+     (or (car (seq-filter (lambda (font) (member font (font-family-list)))
+                          '("Microsoft YaHei" "Microsoft JhengHei" "SimHei")))
+         "default-windows-font"))
+    ('darwin
+     (or (car (seq-filter (lambda (font) (member font (font-family-list)))
+                          '("Hei" "Heiti SC" "Heiti TC")))
+         "default-mac-font"))
+    ('gnu/linux
+     (or (car (seq-filter (lambda (font) (member font (font-family-list)))
+                          '("WenQuanYi Micro Hei")))
+         "default-linux-font"))))
+
+(unless (string-equal (face-attribute 'default :family) "JetBrains Mono")
+  (set-fontset-font "fontset-default" 'han (get-han-font)))
